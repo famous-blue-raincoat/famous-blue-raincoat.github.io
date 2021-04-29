@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+  <input type="text" id="namey" placeholder="请输入昵称">
+  <button id="sure">确认</button>
+  <div id="chat">
+    <p></p>
+  </div>
+  <!-- <input type="text" id="put" placeholder="说点什么吧">
+  <button id="send">发送</button> --> -->
+  <p id="c">输入区：<a href="javascript:void(0)">表情</a></p>
+  <div class="wrap">
+    <!-- <div id="input" contenteditable></div>
+    	    <div class="send">发送</div>  -->
+    <!-- <input type="text" id="put" placeholder="说点什么吧"> -->
+    <div id="put" contenteditable></div>
+    <button id="send">发送</button>
+  </div>
+  <script type="text/javascript" src="http://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+  <script type="text/javascript" src="dist/emotion.js"></script>
+  <script type="text/javascript">
+    Zepto(function ($) {
+
+      $('a').emotion();
+
+      $('#send')
+        .click(function () {
+          // $('#code').html($.emoEncode($('#input').html()));
+          let dv = document.createElement('p');
+          dv.html($.emoDecode($('#put').html()));
+          if (data.type === TYPE_ENTER) {
+            dv.style.color = 'black';
+          }
+          div.appendChild(dv);
+          // $('p').html($.emoDecode($('#put').html()));
+        })
+
+      // $('.code').bind("DOMSubtreeModified", function () {
+      //   $('.show').html($.emoDecode($(this).html()));
+      // })
+
+    })
+  </script>
+
+  <script>
+    let input = document.getElementById('put');//.innerText();
+    let button = document.getElementById('send');
+    let div = document.getElementById('chat');
+    // let name = document.getElementById('namey');
+    // let ok = document.getElementById('sure');
+    const TYPE_ENTER = 0;
+    const TYPE_LEAVE = 1;
+    const TYPE_MSG = 2;
+
+    var socket = new WebSocket('ws://localhost:3001/');
+
+    // socket.addEventListener('open',()=>{
+    //     div.innerHTML = '连接成功';
+    // });
+
+    button.addEventListener('click', () => {
+      // let input=$('#put').innerHTML;
+      socket.send(input.innerHTML);
+      // let value = input.value;
+      // socket.send(value);
+      // socket.send(input);
+      document.getElementById('put').innerHTML= '';
+    });
+
+    // ok.addEventListener('click', () => {
+    //   let value = name.value;
+    //   // socket.send(value);
+    // });
+
+    socket.addEventListener('message', (e) => {
+      let data = JSON.parse(e.data);
+      //把消息显示到div,以追加的方式
+      let dv = document.createElement('p');
+      dv.innerHTML = data.msg + '---' + data.time;
+      if (data.type === TYPE_ENTER) {
+        dv.style.color = 'black';
+      }
+      div.appendChild(dv);
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+body {
+  background: url("https://gitee.com/mengtingai/pic/raw/master/slashes.png");
+  font-size: 16px;
+  text-align: center;
+  /* color:honeydew; */
+}
+#chat {
+  background-color: rgb(95, 7, 7);
+  margin: 0 auto 0;
+  width: 600px;
+  height: 550px;
+  border: 2px solid rgb(22, 22, 22);
+}
+
+p {
+  padding-top: 1px;
+  margin: 2px 15px auto;
+  text-align: left;
+  color: honeydew;
+}
+
+#c,a{
+  text-align: center;
+  color: honeydew;
+}
+
+#put {
+  width: 450px;
+  height: 80px;
+  /* padding-top: -100px; */
+  background-color: white;
+  margin: 10px auto;
+}
+#send {
+  width: 50px;
+  height: 80px;
+  /* padding-top: -100px; */
+  margin: 10px auto;
+}
+
+form {
+  background-color: rgb(95, 7, 7);
+  margin: 200px auto;
+  border-radius: 10px;
+  width: 250px;
+  /* height: 200px; */
+  border: 2px solid rgb(22, 22, 22);
+  color: black;
+  text-align: left;
+  padding: 20px 0 0 50px;
+}
+
+input {
+  margin-bottom: 10px;
+}
+
+#namey{
+  margin-top:50px;
+}
+
+.show,.code {
+  width: 500px;
+  height: 66px;
+  border: 1px solid #666666;
+  border-radius: 5px;
+}
+
+.wrap {
+  width: 500px;
+  display: flex;
+  text-align: center;
+  margin: auto;
+  justify-content: space-between;
+}
+
+#input {
+width: 400px;
+height: 66px;
+border: 1px solid #666666;
+border-radius: 5px;
+}
+#emo {
+  display: flex;
+  width: 500px;
+  flex-wrap: wrap;
+  background-color: #fff;
+  box-shadow: 0px 0px 3px #333333;
+  border-radius: 5px;
+  display: none;
+  margin: auto;
+}
+
+#emo img {
+  border: 1px solid transparent;
+}
+
+#emo img:hover {
+  border-color: #666666;
+  cursor: pointer;
+}
